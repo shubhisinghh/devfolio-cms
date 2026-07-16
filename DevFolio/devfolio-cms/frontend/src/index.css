@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-bg text-slate-100 font-body antialiased transition-colors duration-300;
+}
+
+html.light body {
+  @apply bg-paper-bg text-slate-800;
+}
+
+::selection {
+  @apply bg-cyan/30 text-inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ink-bg;
+}
+html.light ::-webkit-scrollbar-track {
+  @apply bg-paper-bg;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-border rounded-full;
+}
+html.light ::-webkit-scrollbar-thumb {
+  @apply bg-paper-border;
+}
+
+:focus-visible {
+  outline: 2px solid #5fd3c4;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Shared component classes --- */
+
+.eyebrow {
+  @apply font-mono text-xs tracking-wide text-cyan/90 flex items-center gap-2;
+}
+.eyebrow::before {
+  content: "//";
+  @apply text-ink-border;
+}
+html.light .eyebrow::before {
+  @apply text-paper-border;
+}
+
+.surface {
+  @apply bg-ink-surface border border-ink-border rounded-xl transition-colors duration-300;
+}
+html.light .surface {
+  @apply bg-paper-surface border-paper-border;
+}
+
+.surface-2 {
+  @apply bg-ink-surface2 border border-ink-border rounded-lg transition-colors duration-300;
+}
+html.light .surface-2 {
+  @apply bg-paper-surface2 border-paper-border;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 font-mono text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.btn-primary {
+  @apply btn bg-cyan text-ink-bg hover:bg-cyan-soft hover:-translate-y-0.5 shadow-glow;
+}
+.btn-outline {
+  @apply btn border border-ink-border text-slate-200 hover:border-cyan hover:text-cyan;
+}
+html.light .btn-outline {
+  @apply border-paper-border text-slate-700 hover:border-cyan hover:text-cyan;
+}
+.btn-danger {
+  @apply btn bg-rose/90 text-ink-bg hover:bg-rose;
+}
+.btn-ghost {
+  @apply btn text-slate-300 hover:text-cyan;
+}
+html.light .btn-ghost {
+  @apply text-slate-600 hover:text-cyan;
+}
+
+.input {
+  @apply w-full bg-ink-surface2 border border-ink-border rounded-lg px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-cyan outline-none transition-colors font-body;
+}
+html.light .input {
+  @apply bg-paper-surface2 border-paper-border text-slate-800 placeholder:text-slate-400;
+}
+
+.tag {
+  @apply font-mono text-[11px] px-2 py-1 rounded-md bg-ink-surface2 border border-ink-border text-cyan;
+}
+html.light .tag {
+  @apply bg-paper-surface2 border-paper-border;
+}
+
+.section {
+  @apply max-w-6xl mx-auto px-6 md:px-8 py-20 md:py-28;
+}
+
+.h2-display {
+  @apply font-display text-3xl md:text-4xl font-semibold text-slate-100 tracking-tight;
+}
+html.light .h2-display {
+  @apply text-slate-900;
+}
+
+.editor-dot {
+  @apply w-3 h-3 rounded-full inline-block;
+}
+
+.text-body {
+  @apply text-slate-300;
+}
+html.light .text-body {
+  @apply text-slate-600;
+}
+.text-muted {
+  @apply text-slate-400;
+}
+html.light .text-muted {
+  @apply text-slate-500;
+}
+.text-heading {
+  @apply text-slate-100;
+}
+html.light .text-heading {
+  @apply text-slate-900;
+}
+.border-base {
+  @apply border-ink-border;
+}
+html.light .border-base {
+  @apply border-paper-border;
+}
+.bg-base {
+  @apply bg-ink-bg;
+}
+html.light .bg-base {
+  @apply bg-paper-bg;
+}
+.bg-base-90 {
+  @apply bg-ink-bg/90;
+}
+html.light .bg-base-90 {
+  @apply bg-paper-bg/90;
+}
+.bg-surface-solid {
+  @apply bg-ink-surface;
+}
+html.light .bg-surface-solid {
+  @apply bg-paper-surface;
+}
+
+.prose-devfolio h1 {
+  @apply font-display text-2xl md:text-3xl font-semibold mt-8 mb-4 text-slate-100;
+}
+html.light .prose-devfolio h1 {
+  @apply text-slate-900;
+}
+.prose-devfolio h2 {
+  @apply font-display text-xl md:text-2xl font-semibold mt-8 mb-3 text-slate-100;
+}
+html.light .prose-devfolio h2 {
+  @apply text-slate-900;
+}
+.prose-devfolio h3 {
+  @apply font-display text-lg font-semibold mt-6 mb-2 text-slate-100;
+}
+html.light .prose-devfolio h3 {
+  @apply text-slate-900;
+}
+.prose-devfolio p {
+  @apply text-slate-300 leading-relaxed mb-4;
+}
+html.light .prose-devfolio p {
+  @apply text-slate-600;
+}
+.prose-devfolio ul,
+.prose-devfolio ol {
+  @apply text-slate-300 leading-relaxed mb-4 pl-6 space-y-1;
+}
+html.light .prose-devfolio ul,
+html.light .prose-devfolio ol {
+  @apply text-slate-600;
+}
+.prose-devfolio ul {
+  @apply list-disc;
+}
+.prose-devfolio ol {
+  @apply list-decimal;
+}
+.prose-devfolio code {
+  @apply font-mono text-sm bg-ink-surface2 border border-ink-border px-1.5 py-0.5 rounded text-amber;
+}
+html.light .prose-devfolio code {
+  @apply bg-paper-surface2 border-paper-border;
+}
+.prose-devfolio pre {
+  @apply font-mono text-sm bg-ink-surface2 border border-ink-border p-4 rounded-lg overflow-x-auto mb-4;
+}
+html.light .prose-devfolio pre {
+  @apply bg-paper-surface2 border-paper-border;
+}
+.prose-devfolio pre code {
+  @apply bg-transparent border-none p-0;
+}
+.prose-devfolio a {
+  @apply text-cyan underline decoration-cyan/40 hover:decoration-cyan;
+}
+.prose-devfolio blockquote {
+  @apply border-l-2 border-cyan pl-4 italic text-slate-400 my-4;
+}
